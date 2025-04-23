@@ -8,6 +8,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>My Weather App</title>
   </head>
   <body>
@@ -29,14 +30,16 @@
           <div>
             <h1 class="weather-app-city" id="city">Paris</h1>
             <p class="weather-app-details">
-              Tuesday 14:49, scattered clouds
+              <span id="time">Tuesday 14:49</span>,
+              <span id="weather-condition">scattered clouds</span>
               <br />
-              Humidity: <strong>66%</strong>, Wind: <strong>3.13km/h</strong>
+              Humidity: <strong><span id="wind-humidity">66</span>%</strong>,
+              Wind: <strong><span id="wind-speed">3.13</span>km/h</strong>
             </p>
           </div>
           <div class="weather-app-temperature">
-            <div class="weather-app-emoji">🌥️</div>
-            <div class="temperature-value">12</div>
+            <div class="weather-app-emoji" id="weather-icon">🌥️</div>
+            <div class="temperature-value" id="temperature-value">12</div>
             <div class="temperature-unit">°C</div>
           </div>
         </div>
