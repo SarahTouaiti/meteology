@@ -46,8 +46,8 @@ function updateWeather(response) {
   time.innerHTML = format(updatedTime);
 
   //updating the weather emoji;
-  let Emoji = document.querySelector("#weather-icon");
-  Emoji.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-emoji"/>`;
+  let icon = document.querySelector("#icon");
+  icon.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-emoji" />`;
 }
 
 function searchCity(city) {

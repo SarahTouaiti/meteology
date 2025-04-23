@@ -67,15 +67,15 @@ a {
   display: flex;
 }
 .temperature-value {
-  font-size: 80px;
-  margin-left: 10px;
+  font-size: 88px;
   font-weight: bold;
+  line-height: 88px;
 }
 .temperature-unit {
-  margin-top: 16px;
+  margin-top: 6px;
   font-size: 28px;
 }
 .weather-app-emoji {
-  font-size: 44px;
-  margin-top: 22px;
+  width: 88px;
+  height: 88px;
 }
