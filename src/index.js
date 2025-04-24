@@ -48,6 +48,13 @@ function updateWeather(response) {
   //updating the weather emoji;
   let icon = document.querySelector("#icon");
   icon.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-emoji" />`;
+  getForecast(response.data.city);
+}
+
+function getForecast(city) {
+  let apiKey = "81a35fctfab545b52d43e71743o42f03";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&unit=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function searchCity(city) {
@@ -63,7 +70,8 @@ function handleSearch(event) {
   cityElement.innerHTML = searchFormInput.value;
   searchCity(searchFormInput.value);
 }
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = "";
@@ -85,4 +93,3 @@ function displayForecast() {
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearch);
 searchCity("Paris");
-displayForecast();
