@@ -70,23 +70,35 @@ function handleSearch(event) {
   cityElement.innerHTML = searchFormInput.value;
   searchCity(searchFormInput.value);
 }
+
+function formatDay(timeStamp) {
+  let date = new Date(timeStamp * 1000);
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  return days[date.getDay()];
+}
+
 function displayForecast(response) {
   console.log(response.data);
-  days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
-  let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = "";
-  days.forEach(function (day) {
-    forecastHTML += `<div class="weather-forecast-day">
-      <div class="weather-forecast-date">${day}</div>
-      <div class="weather-forecast-icon">🌤️</div>
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHTML += `<div class="weather-forecast-day">
+      <div class="weather-forecast-date">${formatDay(day.time)}</div>
+      <div class="weather-forecast-icon">
+        <img src="${day.condition.icon_url}"/>
+      </div>
       <div class="weather-forecast-temperatures">
         <div class="weather-forecast-temperature">
-          <strong>15º</strong>
+          <strong>${Math.round(day.temperature.maximum)}°</strong>
         </div>
-      <div class="weather-forecast-temperature">9º</div>
+      <div class="weather-forecast-temperature">${Math.round(
+        day.temperature.minimum
+      )}º</div>
       </div>
     </div>`;
+    }
   });
+  let forecastElement = document.querySelector("#weather-forecast");
   forecastElement.innerHTML = forecastHTML;
 }
 
