@@ -18,7 +18,7 @@ function format(date) {
 }
 
 function updateWeather(response) {
-  console.log(response.data);
+  //console.log(response.data);
 
   //updating the temperature
   let updatedTemperature = response.data.temperature.current;
@@ -78,7 +78,7 @@ function formatDay(timeStamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
+  //console.log(response.data);
   let forecastHTML = "";
   response.data.daily.forEach(function (day, index) {
     if (index < 5) {
